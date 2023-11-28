@@ -9,7 +9,6 @@ const getComputerChoice = () => {
   getComputerChoice();
 
   const playRound = (playerSelection, computerSelection) => {
-    console.log('1 ', playerSelection, '2 ', computerSelection)
     if (playerSelection === 'rock' && computerSelection === 'rock'){
       return 'Tie! You both picked rock';
     } else if (playerSelection === 'scissors' && computerSelection === 'scissors'){
@@ -17,31 +16,46 @@ const getComputerChoice = () => {
     } else if (playerSelection === 'paper' && computerSelection === 'paper'){
       return 'Tie! You both picked paper';
     } else if (playerSelection === 'rock' && computerSelection === 'scissors'){
+      playerScore++
       return 'Win! Rock beats scissors';
     } else if (playerSelection === 'rock' && computerSelection === 'paper'){
+      compScore++
       return 'Lose! Paper beats rock';
     } else if (playerSelection === 'paper' && computerSelection === 'rock'){
+      playerScore++
       return 'Win! Paper beats rock';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors'){
+      compScore++
       return 'Lose! Scissors beats paper';
     } else if (playerSelection === 'scissors' && computerSelection === 'rock'){
+      compScore++
       return 'Lose! Rock beats scissors';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper'){
+      playerScore++
       return 'Win! Scissors beats paper';
     }
   }
 
-  const playerSelection = prompt("Do you choose rock, paper, or scissors?");
+
   
 
 
 const game = () => {
   for (let i = 0; i < 5; i++){
+    const playerSelection = prompt("Choose what to throw", 'Rock, Paper, Scissors').toLowerCase();
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    console.log('1 ', playRound(playerSelection, computerSelection));
   }
+   if (playerScore > compScore){
+    return 'You beat the computer! genius!'
+   } else if (playerScore < compScore){
+    return 'You got beat by the computer! Cry in a corner!'
+   } else {
+    return 'Giant tie! Not too shabby'
+   }
 }
-game ();
+
+console.log(game ());
   
 
     
