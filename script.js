@@ -60,22 +60,38 @@ const getComputerChoice = () => {
     }
   }
 
+  const checkForWinner = (playerScore, compScore) => {
+    if (playerScore === 5) {
+      const h2 = document.createElement('h2');
+      h2.classList.add('player-won');
+      h2.innerText = `You won ${playerScore} to ${compScore}, great job beating the computer`;
+      outcomeDiv.append(h2);
+    } else if (compScore === 5){
+      const h2 = document.createElement('h2');
+      h2.classList.add('computer-won')
+      outcomeDiv.append(h2);
+    }
+  }
+
   rockbutton.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = 'rock';
     playRound(playerSelection, computerSelection);
+    checkForWinner(playerScore, compScore);
   });
   
   paperbutton.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = 'paper';
     playRound(playerSelection, computerSelection);
+    checkForWinner(playerScore, compScore);
   });
 
   scissorsbutton.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = 'scissors';
     playRound(playerSelection, computerSelection);
+    checkForWinner(playerScore, compScore);
   });
 
 
